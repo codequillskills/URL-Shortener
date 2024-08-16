@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake URL Generator</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Generate fake URLs easily with our Fake URL Generator by CodeQuillCrafts. Simply enter a URL and get a generated link in seconds.">
+    <meta name="keywords" content="Fake URL Generator, URL Shortener, URL Generator, Fake Link, CodeQuillCrafts">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="CodeQuillCrafts">
+</head>
+
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="url">Enter URL:</label>
+        <input type="url" name="url" required placeholder="Enter the URL (http or https only)">
+        <button type="submit">Generate URL</button>
+        {% if gurl %}
+        <div id="urldis">
+            <p>Generated URL:<a href="{{ gurl }}">https://fakeurlgenerator-codequillcrafts.onrender.com/{{gurl }}</a>
+            </p>
+        </div>
+        {% endif %}
+    </form>
+</body>
+
+</html>
